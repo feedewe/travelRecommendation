@@ -1,0 +1,67 @@
+body {
+  background-image: url("images/background.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex; /* Aplicar flexbox a nav */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+.nav-links {
+    display: flex; /* Use flexbox for horizontal links */
+}
+
+.nav-links a {
+    color: #333; /* Link color */
+    text-decoration: none; /* Remove underline */
+    margin-right: 20px; /* Add space between links */
+}
+
+.nav-links a:last-child {
+    margin-right: 0; /* Remove margin from last link */
+}
+
+.search-bar {
+    display: flex; /* Use flexbox for search bar elements */
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container {
+    text-align: center;
+    padding: 50px 20px;
+    color: white; /* Text color on background image */
+}
+
+.container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 1.2em;
+}
