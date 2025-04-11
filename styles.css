@@ -65,3 +65,16 @@ nav {
 .container p {
     font-size: 1.2em;
 }
+
+#result{
+    height: 400px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+    #result img{
+      width: 200px;
+      height: 100px;
+    }

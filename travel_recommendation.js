@@ -17,21 +17,31 @@ function search(){
     const resultDiv = document.getElementById('result');
     resultDiv.innerHTML='';
 
-    fetch('travel_recommendation_api.json')
+
+    fetch('./travel_recommendation_api.json')
     .then(response => response.json())
     .then(data=> {
-        const recommendation = data.recommendations.find(item=>item.name.toLowerCase()===input);
+        let recommendation = null;
 
-        if(recommendation){
-            const destiny = recommendation.name.join(', ');
-            const description = recommendation.description.join(', ');
-            const image = recommendation.imageUrl;
-
-            resultDiv.innerHTML += `<h2>${destiny}</h2>`;
-            resultDiv.innerHTML += `<img src="${image}" alt="hjh">`;
-            resultDiv.innerHTML += `<p><strong>Description:</strong> ${description}</p>`;
+        for(const country of data.countries){
+            for(const city of country.cities){
+                if(city.name.toLowerCase()===input){
+                    recommendation=city;
+                    break;
+                }
+            }
+            if(recommendation) break;
         }
-        else{
+        
+        if(!recommendation){
+            recommendation = data.beaches.find(item=>item.name.toLowerCase()===input);
+        }if(!recommendation){
+            recommendation = data.temples.find(item=>item.name.toLowerCase()===input);
+        }if(recommendation){
+            resultDiv.innerHTML += `<h2>${recommendation.name}</h2>`;
+            resultDiv.innerHTML += `<img src="${recommendation.imageUrl}" alt="${recommendation.name}" width="300">`;
+            resultDiv.innerHTML += `<p><strong>Description:</strong> ${recommendation.description}</p>`;
+        }else{
             resultDiv.innerHTML = 'Recommendation not found.';
         }
     })
