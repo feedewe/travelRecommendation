@@ -25,7 +25,7 @@ function search(){
 
         for(const country of data.countries){
             for(const city of country.cities){
-                if(city.name.toLowerCase()===input){
+                if(city.name.toLowerCase().includes(input)){
                     recommendation=city;
                     break;
                 }
@@ -34,9 +34,9 @@ function search(){
         }
         
         if(!recommendation){
-            recommendation = data.beaches.find(item=>item.name.toLowerCase()===input);
+            recommendation = data.beaches.find(item=>item.name.toLowerCase().includes(input));
         }if(!recommendation){
-            recommendation = data.temples.find(item=>item.name.toLowerCase()===input);
+            recommendation = data.temples.find(item=>item.name.toLowerCase().includes(input));
         }if(recommendation){
             resultDiv.innerHTML += `<h2>${recommendation.name}</h2>`;
             resultDiv.innerHTML += `<img src="${recommendation.imageUrl}" alt="${recommendation.name}" width="300">`;

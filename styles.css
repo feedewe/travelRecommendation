@@ -64,17 +64,27 @@ nav {
 
 .container p {
     font-size: 1.2em;
+    
 }
 
-#result{
-    height: 400px;
+#result {
+    height: auto; /* cambiá esto si querés que se ajuste al contenido */
     width: 500px;
+    margin: 40px auto; /* centra horizontalmente */
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
-  }
-    #result img{
-      width: 200px;
-      height: 100px;
-    }
+    color: white; /* texto en blanco */
+    text-align: center; /* centra el texto */
+    background-color: rgba(0, 0, 0, 0.5); /* opcional: para que se lea mejor sobre el fondo */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#result img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
