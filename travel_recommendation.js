@@ -21,27 +21,37 @@ function search(){
     fetch('./travel_recommendation_api.json')
     .then(response => response.json())
     .then(data=> {
-        let recommendation = null;
+        let found = false;
 
         for(const country of data.countries){
             for(const city of country.cities){
                 if(city.name.toLowerCase().includes(input)){
-                    recommendation=city;
-                    break;
+                    resultDiv.innerHTML += `<h2>${city.name}</h2>`;
+                    resultDiv.innerHTML += `<img src="${city.imageUrl}" alt="${city.name}" width="300">`;
+                    resultDiv.innerHTML += `<p><strong>Description:</strong> ${city.description}</p>`;
+                    found = true;
                 }
             }
-            if(recommendation) break;
         }
         
-        if(!recommendation){
-            recommendation = data.beaches.find(item=>item.name.toLowerCase().includes(input));
-        }if(!recommendation){
-            recommendation = data.temples.find(item=>item.name.toLowerCase().includes(input));
-        }if(recommendation){
-            resultDiv.innerHTML += `<h2>${recommendation.name}</h2>`;
-            resultDiv.innerHTML += `<img src="${recommendation.imageUrl}" alt="${recommendation.name}" width="300">`;
-            resultDiv.innerHTML += `<p><strong>Description:</strong> ${recommendation.description}</p>`;
-        }else{
+        for(const temple of data.temples){
+            if(temple.name.toLowerCase().includes(input) || input.includes("temple")){
+                resultDiv.innerHTML += `<h2>${temple.name}</h2>`;
+                resultDiv.innerHTML += `<img src="${temple.imageUrl}" alt="${temple.name}" width="300">`;
+                resultDiv.innerHTML += `<p><strong>Description:</strong> ${temple.description}</p>`;
+                found = true;
+                }
+            }
+        
+        for(const beach of data.beaches){
+            if(beach.name.toLowerCase().includes(input) || input.includes("beach")){
+                resultDiv.innerHTML += `<h2>${beach.name}</h2>`;
+                resultDiv.innerHTML += `<img src="${beach.imageUrl}" alt="${beach.name}" width="300">`;
+                resultDiv.innerHTML += `<p><strong>Description:</strong> ${beach.description}</p>`;
+                found = true;
+            }
+        } 
+        if(!found){
             resultDiv.innerHTML = 'Recommendation not found.';
         }
     })
@@ -51,3 +61,4 @@ function search(){
     });
 }
 btnSearch.addEventListener('click',search);
+btnReset.addEventListener('click',resetSearch);
