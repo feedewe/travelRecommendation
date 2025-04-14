@@ -6,85 +6,192 @@ body {
   font-family: Arial, sans-serif;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to left, rgba(255,255,255,0.8), rgba(255,255,255,0));
+  z-index: -1;
+}
+
 nav {
-    background-color: rgba(255, 255, 255, 0.8);
-    display: flex; /* Aplicar flexbox a nav */
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  text-decoration: double;
+  color: #007bff;
+}
 
 .nav-links {
-    display: flex; /* Use flexbox for horizontal links */
+  display: flex;
 }
 
 .nav-links a {
-    color: #333; /* Link color */
-    text-decoration: none; /* Remove underline */
-    margin-right: 20px; /* Add space between links */
+  color: #333;
+  text-decoration: none;
+  margin-right: 20px;
 }
 
 .nav-links a:last-child {
-    margin-right: 0; /* Remove margin from last link */
+  margin-right: 0;
 }
 
 .search-bar {
-    display: flex; /* Use flexbox for search bar elements */
+  display: flex;
 }
 
 .search-bar input[type="text"] {
-    padding: 8px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .search-bar button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 3px;
 }
 
+
 .container {
-    text-align: center;
-    padding: 50px 20px;
-    color: white; /* Text color on background image */
+  padding: 50px 20px;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.text-content {
+  max-width: 500px; /* o el ancho que prefieras */
+  padding: 20px;
+  background-color: rgba(242, 242, 242, 0.4); /* opcional: para legibilidad */
+  border-radius: 10px;
 }
 
 .container h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
 
 .container p {
-    font-size: 1.2em;
-    
+  font-size: 1.2em;
 }
 
 #result {
-    height: auto; /* cambiá esto si querés que se ajuste al contenido */
-    width: 500px;
-    margin: 40px auto; /* centra horizontalmente */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white; /* texto en blanco */
-    text-align: center; /* centra el texto */
-    background-color: rgba(0, 0, 0, 0.5); /* opcional: para que se lea mejor sobre el fondo */
-    padding: 20px;
-    border-radius: 10px;
+  height: auto;
+  width: 500px;
+  margin: 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 #result img {
-    width: 300px;
-    height: auto;
-    border-radius: 8px;
-    margin: 15px 0;
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semiopaco */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.contact-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+.button-container {
+  margin-top: 30px;
+}
+
+.book-now-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-btn:hover {
+  background-color: #0056b3;
+}
+
+.social-fixed {
+  position: fixed;
+  top: 120px; /* Ajusta la distancia desde arriba si es necesario */
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 999;
+  padding: 10px 5px;
+}
+
+.social-fixed a {
+  font-size: 24px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 12px;
+  border-radius: 0 8px 8px 0;
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center; /* Centrado del ícono dentro del círculo */
+  display: block;
+}
+
+.social-fixed a:hover {
+  background-color: #007bff;
+  transform: translateX(5px);
 }
